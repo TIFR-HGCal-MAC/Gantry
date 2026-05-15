@@ -1,3 +1,7 @@
+# Note: 
+Contains code/configs specific for TIFR setup. 
+
+----------------------------------------------------
 # Getting started: Connection to the MAC local DB
 
 This documentation pertains to this project: https://github.com/cmu-hgc-mac/Gantry
