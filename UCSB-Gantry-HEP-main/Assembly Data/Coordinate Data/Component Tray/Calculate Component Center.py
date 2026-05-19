@@ -47,7 +47,11 @@ def build_XYZU(reshape_input):
     FD1_2 = setup_rotation(get_angle(reshape_input[2],reshape_input[0]))
     FD4_2 = setup_rotation(get_angle(reshape_input[2],reshape_input[3]))
     FD4_5 = setup_rotation(get_angle(reshape_input[1],reshape_input[3]))
-    FD_angles = [FD1_5,FD1_2,FD4_2,FD4_5]
+    ### Mukund's change
+    # ------------------------------------------------------
+    # FD_angles = [FD1_5,FD1_2,FD4_2,FD4_5]
+    FD_angles = [FD1_5, FD1_2]
+    # ------------------------------------------------------
     #XYZU.append(get_angle(reshape_input[2],reshape_input[0]))     ### get angle between CH 81 and 95 for sensor or FD3 and FD6 for hexaboard
     XYZU.append(Average(FD_angles))     ### get average of all possible angles instead of just one angle
     distance = sqrt(((X[0]-X[1])**2)+((Y[0]-Y[1])**2))
@@ -67,6 +71,10 @@ def calculate_center(input, position, adjustment, left_handed):
         i += 1
     CH1_Z = reshape_input[0][2]
     center, distance, CH1_8_rotation = build_XYZU(reshape_input)  ### get center coordinates
+    ### Mukund's change
+    # ---------------------------------------
+    center = center + [2.5, 1.5, 0, 0]
+    # ---------------------------------------
     CH1 = get_CH_1(center,distance,CH1_8_rotation,CH1_Z)
     CH1.append(0)
     ID = get_ID(center,CH1_8_rotation)
